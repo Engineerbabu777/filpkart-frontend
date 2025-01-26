@@ -20,7 +20,7 @@ export async function replace(routeName: string, params?: object) {
   }
 }
 
-export async function resetAndNavigate(routeName: string, params?: object) {
+export async function resetAndNavigate(routeName: string) {
   navigationRef.isReady();
   if (navigationRef.isReady()) {
     navigationRef.dispatch(
@@ -29,5 +29,12 @@ export async function resetAndNavigate(routeName: string, params?: object) {
         routes: [{name: routeName}],
       }),
     );
+  }
+}
+
+export async function goBack() {
+  navigationRef.isReady();
+  if (navigationRef.isReady()) {
+    navigationRef.dispatch(CommonActions.goBack());
   }
 }
